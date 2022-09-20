@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+    <button id="btnGET">发起get请求</button>
+    <button id="btnPOST">发起post请求</button>
+
+    <SCript>
+        $(function () {
+            $("#btnGET").on('click', function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://www.liulongbin.top:3006/api/getbooks',
+                    data: { id: 1 },
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            })
+
+            $("#btnPOST").on('click', function () {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://www.liulongbin.top:3006/api/addbook',
+                    data: { bookname: "西游记", author: "吴承恩", publisher: "北京图书出版社" },
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            })
+        })
+    </SCript>
+</body>
+
+</html>

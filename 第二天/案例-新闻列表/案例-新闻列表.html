@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./assets/news.css" />
+  <script src="./lib/jquery.js"></script>
+  <script src="./lib/template-web.js"></script>
+  <script src="./js/news.js"></script>
+</head>
+
+<body>
+
+  <div id="news-list">
+  </div>
+  <!-- 定义模板 -->
+  <!-- 此处text/html 的脚本 相当于一个html，其点击事件依然遵从正常的思路，在js中异步实现。 -->
+  <script type="text/html" id="tpl-news">
+    <!-- {{data.length}} -->
+    {{each data}}
+
+  <div class="news-item">
+    <!--                              根路径                               +         具体地址 -->
+    <img class="thumb" src="{{'http://www.liulongbin.top:3006'+ $value.img}}" alt="" />
+    <div class="right-box">
+      <!--               这个value是data -->
+      <h1 class="title">{{$value.title}}</h1>
+      <div class="tags">
+        {{each $value.tags}}
+        <!-- 这个value是tags -->
+        <span>{{$value}}</span>
+        {{/each}}
+      </div>
+      <div class="footer">
+        <div>
+          <span>{{$value.source}}</span>&nbsp;&nbsp;
+          <span>{{$value.time | dataFormat}}</span>
+        </div>
+        <span>评论数：{{$value.cmtcount}}</span>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+  </script>
+</body>
+
+</html>

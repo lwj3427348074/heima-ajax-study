@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var data = { name: '张三', age: 20 }
+        var str = '<div>{{name}}今年{{age}}岁了</div>'
+        // \s*表示在{{}}里可以匹配任意个空白字符 +表示这些字母可以出现多次
+        var pattern = /{{\s*([a-zA-Z]+)\s*}}/
+
+        var patternResult = null
+        while (patternResult = pattern.exec(str)) {
+            str = str.replace(patternResult[0], data[patternResult[1]])
+        }
+        console.log(str);
+    </script>
+</body>
+
+</html>
